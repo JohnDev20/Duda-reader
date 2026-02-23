@@ -1,3 +1,4 @@
+@file:OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
 package com.dudareader.presentation.ui.screens
 
 import androidx.activity.compose.rememberLauncherForActivityResult

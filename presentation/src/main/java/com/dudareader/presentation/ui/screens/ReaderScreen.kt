@@ -1,3 +1,4 @@
+@file:OptIn(androidx.compose.foundation.ExperimentalFoundationApi::class)
 package com.dudareader.presentation.ui.screens
 
 import android.webkit.JavascriptInterface
@@ -21,7 +22,7 @@ import com.dudareader.presentation.viewmodel.ReaderViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-
+import androidx.compose.foundation.ExperimentalFoundationApi
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ReaderScreen(
