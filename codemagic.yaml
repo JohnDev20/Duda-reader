@@ -1,20 +1,22 @@
 workflows:
   android-debug-build:
-      name: Android Debug Build
-          instance_type: linux
-              max_build_duration: 60
+    name: "Android Debug Build"
+    instance_type: linux
+    max_build_duration: 60
 
-                  environment:
-                        vars:
-                                GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx4096m -Dkotlin.daemon.jvm.options=-Xmx2048m"
-                                      java: 17
+    environment:
+      java: 17
+      vars:
+        GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx4096m"
 
-                                          scripts:
-                                                - name: Grant execute permission for gradlew
-                                                        script: chmod +x ./gradlew
+    scripts:
+      - name: Grant execute permission
+        script: |
+          chmod +x ./gradlew
 
-                                                              - name: Build Debug APK
-                                                                      script: ./gradlew clean :app:assembleDebug
+      - name: Build Debug APK
+        script: |
+          ./gradlew clean :app:assembleDebug
 
-                                                                          artifacts:
-                                                                                - app/build/outputs/**/*.apk
+    artifacts:
+      - app/build/outputs/**/*.apk
