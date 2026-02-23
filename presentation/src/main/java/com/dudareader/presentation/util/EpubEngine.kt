@@ -81,7 +81,7 @@ class EpubEngine @Inject constructor(
         // convert resolved absolute paths to relative from rootDir
         val rootDir = opf.parentFile!!.parentFile ?: opf.parentFile!!
         val fixedManifest = manifest.mapValues { (_, abs) ->
-            File(abs).relativeTo(rootDir).path.replace('\', '/')
+            File(abs).relativeTo(rootDir).path.replace('\\', '/')
         }
         return fixedManifest to spine
     }
