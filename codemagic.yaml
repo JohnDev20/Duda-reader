@@ -1,4 +1,3 @@
-cat > codemagic.yaml <<'YAML'
 workflows:
   android-debug-build:
     name: Android Debug Build
@@ -16,4 +15,3 @@ workflows:
 
     artifacts:
       - app/build/outputs/**/*.apk
-YAML
