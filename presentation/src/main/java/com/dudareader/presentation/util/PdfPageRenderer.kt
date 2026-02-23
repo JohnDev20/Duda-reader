@@ -27,15 +27,20 @@ class PdfPageRenderer @Inject constructor() {
         handle.pfd.close()
     }
 
+    @Synchronized
     fun renderPage(handle: PdfHandle, pageIndex: Int, maxWidth: Int): Bitmap {
         val page = handle.renderer.openPage(pageIndex)
-        val ratio = page.height.toFloat() / page.width.toFloat()
-        val width = maxWidth.coerceAtLeast(1)
-        val height = (width * ratio).toInt().coerceAtLeast(1)
-        val bmp = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
-        page.render(bmp, null, null, PdfRenderer.Page.RENDER_MODE_FOR_DISPLAY)
-        page.close()
-        return bmp
+        try {
+            val ratio = page.height.toFloat() / page.width.toFloat()
+            val width = maxWidth.coerceAtLeast(1)
+            val height = (width * ratio).toInt().coerceAtLeast(1)
+
+            val bmp = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+            page.render(bmp, null, null, PdfRenderer.Page.RENDER_MODE_FOR_DISPLAY)
+            return bmp
+        } finally {
+            page.close()
+        }
     }
 
     fun pageCount(handle: PdfHandle): Int = handle.renderer.pageCount
