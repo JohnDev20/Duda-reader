@@ -1,0 +1,24 @@
+_INCLUDE_BUILD_REPOS = {
+    google()
+    mavenCentral()
+}
+
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        *_INCLUDE_BUILD_REPOS
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        *_INCLUDE_BUILD_REPOS
+    }
+}
+
+rootProject.name = "Duda Reader"
+include ':app'
+include ':data'
+include ':domain'
+include ':presentation'
