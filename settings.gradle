@@ -1,19 +1,16 @@
-_INCLUDE_BUILD_REPOS = {
-    google()
-    mavenCentral()
-}
-
 pluginManagement {
     repositories {
         gradlePluginPortal()
-        *_INCLUDE_BUILD_REPOS
+        google()
+        mavenCentral()
     }
 }
 
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
     repositories {
-        *_INCLUDE_BUILD_REPOS
+        google()
+        mavenCentral()
     }
 }
 
