@@ -3,6 +3,7 @@ package com.dudareader.presentation.ui.screens
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.foundation.layout.padding
 import com.dudareader.presentation.ui.navigation.Routes
 
 @Composable
