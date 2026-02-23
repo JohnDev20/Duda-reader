@@ -8,10 +8,18 @@ workflows:
 
     scripts:
       - name: Make gradlew executable
-        script: chmod +x ./gradlew
+        script: |
+          chmod +x ./gradlew
+          ls -la ./gradlew
+          ./gradlew --version
 
       - name: Build APK
-        script: ./gradlew clean :app:assembleDebug
+        script: |
+          set -e
+          ./gradlew clean :app:assembleDebug --stacktrace --info
+          find . -type f -name "*.apk" -maxdepth 6 || true
+          ls -R app/build/outputs || true
 
     artifacts:
+      - app/build/outputs/apk/debug/*.apk
       - app/build/outputs/**/*.apk
